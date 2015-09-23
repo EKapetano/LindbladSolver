@@ -1,0 +1,10 @@
+10000			#Number of Timesteps
+2			#Number of sites/states
+ 2 -1			#Hamiltonian
+-1  2			
+0.001			#Discretization dt
+1.0			#Dephasing strength
+1.0 1.0			#Input/Output rates
+N   			#Read final state from last run(Y/N)
+(0,0) (0,0)		#Initial density matrix
+(0,0) (0,0)		
