@@ -74,8 +74,8 @@ contains
     !$OMP SECTION
     allocate(hamilton(dim,dim))
     hamilton = 0.0_dp
-    hamilton(1,1) = 1.0_dp
-    hamilton(dim,dim) = 1.0_dp
+    hamilton(1,1) = 0.0_dp
+    hamilton(dim,dim) = 0.0_dp
     hamilton(2:dim-1,2:dim-1) = tmp2
     deallocate(tmp2)
     !$OMP END SECTIONS
@@ -190,10 +190,10 @@ contains
     integer, intent(in) :: kk, dim
     integer :: ii
     
-    tmp = matmul(hamilton, lind)
+    tmp = matmul(hamilton(2:dim-1,2:dim-1), lind(2:dim-1,2:dim-1))
     ecurr(kk) = 0.0_dp
     !Calculate the Trace
-    do ii = 1, dim
+    do ii = 1, dim-2
        ecurr(kk) = ecurr(kk) + real(tmp(ii,ii))
     end do
     ecurr(kk) = cc * ecurr(kk)

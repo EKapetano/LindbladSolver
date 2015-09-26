@@ -140,7 +140,7 @@ program qswalk
 
      !Calculate Entropy
      !$OMP SINGLE
-     call calc_rel_entropy(entropy,kk,dim,density,sigma,tmp)
+     !call calc_rel_entropy(entropy,kk,dim,density,sigma,tmp)
      !$OMP END SINGLE NOWAIT
      !Check positivity of the density Matrix for debugging purposes(optional)
      !call check_positivity(density,dim,t)
@@ -162,11 +162,11 @@ program qswalk
   !Write final density matrix into file
   call write_lastdens(density,dim)
   !Write relative entropy into file
-  call write_entropy(dt,steps,entropy)
+  !call write_entropy(dt,steps,entropy)
   !Write Energy currents into file
   call write_energycurr(dt,ecurrIN,ecurrOUT,ecurrDEPH,steps)
   !(Optional) Calculate currents
-  call calc_curr(dim,steps,hamilton,pp,dt)
+  !call calc_curr(dim,steps,hamilton,pp,dt)
   !(Optional) Write Voltage on screen
   aa = real(density(2,2)) - real(density(dim-1,dim-1))
   write(*,"(A,F30.15)") "Voltage: ", aa
